@@ -29,11 +29,15 @@ def naver_scraper(code):
     price = soup.select_one(
         "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_low_price__fByaG > em").get_text().replace(",", "")
 
+    delivery = soup.select_one(
+        "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_delivery_price__3f-2l > em").get_text().replace(",", "")
+
     return {
         "name": name,
         "url": url + str(code),
         "imageUrl": imageUrl,
         "price": int(price),
+        "delivery": int(delivery),
         "rating": rating,
         "rater": int(rater),
     }
