@@ -1,6 +1,5 @@
 from fastapi import FastAPI
-from app import scraper
-from app import naver
+from scraper import naver_scraper, danawa_scraper
 
 app = FastAPI()
 
