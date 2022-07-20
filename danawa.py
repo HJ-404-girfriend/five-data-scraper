@@ -19,8 +19,13 @@ dom = etree.HTML(str(soup))
 danawWrap = json.loads(
     dom.xpath("//*[@id='danawa_wrap']/script[46]")[0].text)
 
-print(danawWrap["name"])
-print(danawWrap["image"][0][2:])
-print(danawWrap["aggregateRating"]["ratingValue"])
-print(danawWrap["aggregateRating"]["reviewCount"])
-print(danawWrap["offers"]["lowPrice"])
+returnData = {
+    "name": danawWrap["name"],
+    "url": danawWrap["offers"]["url"],
+    "imageUrl": danawWrap["image"][0][2:],
+    "price": danawWrap["offers"]["lowPrice"],
+    "rating": danawWrap["aggregateRating"]["ratingValue"],
+    "rater": danawWrap["aggregateRating"]["reviewCount"],
+}
+
+print(returnData)
