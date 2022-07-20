@@ -30,7 +30,7 @@ def danawa_scraper(code):
         "price": int(danawWrap["offers"]["lowPrice"]),
         # "delivery": int(delivery),
         "grade": danawWrap["aggregateRating"]["ratingValue"],
-        "rater": int(danawWrap["aggregateRating"]["reviewCount"]),
+        "heart": int(danawWrap["aggregateRating"]["reviewCount"]),
     }
 
 
@@ -71,5 +71,5 @@ def naver_scraper(code):
         "price": int(price),
         # "delivery": int(delivery),
         "grade": rating,
-        "rater": int(rater),
+        "heart": int(rater),
     }
