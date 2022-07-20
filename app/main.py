@@ -1,6 +1,6 @@
-import string
 from fastapi import FastAPI
-from scraper import naver, danawa
+from app import scraper
+from app import naver
 
 app = FastAPI()
 
@@ -20,6 +20,6 @@ async def data(type: str = "", code: int = 0):
     if type == "naver":
         return naver.naver_scraper(code)
     elif type == "danawa":
-        return danawa.danawa_scraper(code)
+        return scraper.danawa_scraper(code)
     else:
         return {"message": "type is not valid"}
