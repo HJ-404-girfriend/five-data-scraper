@@ -25,11 +25,11 @@ def danawa_scraper(code):
         "#blog_content > div.summary_info > div.detail_summary > div.summary_left > div.lowest_area > div.lowest_list > table > tbody.card_list > tr > td.ship > span").get_text().replace(",", "").replace("원", "")
 
     return {
-        "name": danawWrap["name"],
+        "title": danawWrap["name"],
         "url": url + str(code),
         "imageUrl": "https://"+danawWrap["image"][0][2:],
         "price": int(danawWrap["offers"]["lowPrice"]),
         "delivery": int(delivery),
-        "rating": danawWrap["aggregateRating"]["ratingValue"],
+        "grade": danawWrap["aggregateRating"]["ratingValue"],
         "rater": int(danawWrap["aggregateRating"]["reviewCount"]),
     }

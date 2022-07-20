@@ -33,11 +33,11 @@ def naver_scraper(code):
         "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_delivery_price__3f-2l > em").get_text().replace(",", "")
 
     return {
-        "name": name,
+        "title": name,
         "url": url + str(code),
         "imageUrl": imageUrl,
         "price": int(price),
         "delivery": int(delivery),
-        "rating": rating,
+        "grade": rating,
         "rater": int(rater),
     }
