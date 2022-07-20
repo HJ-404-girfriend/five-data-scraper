@@ -14,7 +14,7 @@ async def ping():
     return {"message": "pong"}
 
 
-@app.get("/data/")
+@app.get("/api/data/")
 async def data(type: str = "", code: int = 0):
     if type == "naver":
         return naver_scraper(code)
