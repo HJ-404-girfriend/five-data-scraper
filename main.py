@@ -16,7 +16,7 @@ async def ping():
 
 
 @app.get("/data/")
-async def data(type: string = 0, code: int = 10):
+async def data(type: str = "", code: int = 0):
     if type == "naver":
         return naver.naver_scraper(code)
     elif type == "danawa":

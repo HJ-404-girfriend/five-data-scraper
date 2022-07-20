@@ -10,7 +10,7 @@ def naver_scraper(code):
                 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
                 'Accept-Language': 'en-US, en;q=0.5'})
 
-    page = requests.get(url + code, headers=HEADERS)
+    page = requests.get(url + str(code), headers=HEADERS)
 
     soup = bs(page.text, "html.parser")
 
@@ -31,9 +31,9 @@ def naver_scraper(code):
 
     return {
         "name": name,
-        "url": url+code,
+        "url": url + str(code),
         "imageUrl": imageUrl,
-        "price": price,
+        "price": int(price),
         "rating": rating,
-        "rater": rater,
+        "rater": int(rater),
     }

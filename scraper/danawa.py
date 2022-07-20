@@ -1,3 +1,4 @@
+from xxlimited import Str
 import requests
 import json
 from lxml import etree
@@ -12,7 +13,7 @@ def danawa_scraper(code):
                 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
                 'Accept-Language': 'en-US, en;q=0.5'})
 
-    page = requests.get(url + code, headers=HEADERS)
+    page = requests.get(url + str(code), headers=HEADERS)
 
     soup = bs(page.text, "html.parser")
     dom = etree.HTML(str(soup))
@@ -22,9 +23,9 @@ def danawa_scraper(code):
 
     return {
         "name": danawWrap["name"],
-        "url": url+code,
+        "url": url + str(code),
         "imageUrl": "https://"+danawWrap["image"][0][2:],
-        "price": danawWrap["offers"]["lowPrice"],
+        "price": int(danawWrap["offers"]["lowPrice"]),
         "rating": danawWrap["aggregateRating"]["ratingValue"],
-        "rater": danawWrap["aggregateRating"]["reviewCount"],
+        "rater": int(danawWrap["aggregateRating"]["reviewCount"]),
     }
