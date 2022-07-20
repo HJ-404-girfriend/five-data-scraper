@@ -20,15 +20,15 @@ def danawa_scraper(code):
     danawWrap = json.loads(
         dom.xpath("//*[@id='danawa_wrap']/script[46]")[0].text)
 
-    delivery = soup.select_one(
-        "#blog_content > div.summary_info > div.detail_summary > div.summary_left > div.lowest_area > div.lowest_list > table > tbody.card_list > tr > td.ship > span").get_text().replace(",", "").replace("원", "")
+    # delivery = soup.select_one(
+    #     "#blog_content > div.summary_info > div.detail_summary > div.summary_left > div.lowest_area > div.lowest_list > table > tbody.card_list > tr > td.ship > span").get_text().replace(",", "").replace("원", "")
 
     return {
         "title": danawWrap["name"],
         "url": url + str(code),
         "imageUrl": "https://"+danawWrap["image"][0][2:],
         "price": int(danawWrap["offers"]["lowPrice"]),
-        "delivery": int(delivery),
+        # "delivery": int(delivery),
         "grade": danawWrap["aggregateRating"]["ratingValue"],
         "rater": int(danawWrap["aggregateRating"]["reviewCount"]),
     }
@@ -61,15 +61,15 @@ def naver_scraper(code):
     price = soup.select_one(
         "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_low_price__fByaG > em").get_text().replace(",", "")
 
-    delivery = soup.select_one(
-        "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_delivery_price__3f-2l > em").get_text().replace(",", "")
+    # delivery = soup.select_one(
+    #     "#__next > div > div.style_container__3iYev > div.style_inner__1Eo2z > div.style_content_wrap__2VTVx > div.style_content__36DCX > div > div.summary_info_area__3XT5U > div.lowestPrice_price_area__OkxBK > div.lowestPrice_delivery_price__3f-2l > em").get_text().replace(",", "")
 
     return {
         "title": name,
         "url": url + str(code),
         "imageUrl": imageUrl,
         "price": int(price),
-        "delivery": int(delivery),
+        # "delivery": int(delivery),
         "grade": rating,
         "rater": int(rater),
     }
